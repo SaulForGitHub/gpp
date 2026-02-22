@@ -299,7 +299,7 @@ def about(request):
     """
     return render(request, 'about.html')
 
-@login_required
+# @login_required
 def signup(request):
     """
     Handles user registration for the medical application.
