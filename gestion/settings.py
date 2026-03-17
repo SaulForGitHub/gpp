@@ -156,6 +156,26 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Restablece el tiempo de expiración con cada solicitud
 SESSION_SAVE_EVERY_REQUEST = True
 
+# --- Configuración de seguridad recomendada para producción ---
+if not DEBUG:
+    # Cookies seguras y protegidas
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+    CSRF_COOKIE_HTTPONLY = True
+    # Cabeceras de seguridad
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_HSTS_SECONDS = 31536000  # 1 año
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_REFERRER_POLICY = 'same-origin'
+    # Content Security Policy (CSP) puede requerir configuración adicional según tus necesidades
+    # Ejemplo básico:
+    # CSP_HEADER = "default-src 'self'; script-src 'self'; style-src 'self';"
+    # Puedes usar django-csp para una gestión más avanzada
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
