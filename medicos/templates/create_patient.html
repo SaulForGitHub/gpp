@@ -178,7 +178,7 @@
                                                 <tr>
                                                     <td>{{ criterio.descripcion }}</td>
                                                     <td>{{ criterio.puntaje }}</td>
-                                                    <td>{{ criterio.max_dias }}</td>
+                                                    <td>{% if criterio.max_dias is not None %}{{ criterio.max_dias }}{% else %}0{% endif %}</td>
                                                     <td style="text-align:center;">
                                                         <input type="radio" name="criterio_clinico_{{ eje.grouper.id }}" value="{{ criterio.puntaje }}"
                                                             @change="criteriosClinicos[{{ eje.grouper.id }}] = $event.target.value" {% if forloop.first %}required{% endif %}>
